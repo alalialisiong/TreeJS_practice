@@ -20,7 +20,11 @@ const init = () => {
     renderer.setSize(width, height);
 
     document.getElementById('webgl').append(renderer.domElement);
-
+    const btnClick = document.getElementById('btnTest');
+    const btnXPlusClick = document.getElementById('btnXPlus');
+    const btnXMinusClick = document.getElementById('btnXMinus');
+    const btnYPlusClick = document.getElementById('btnYPlus');
+    const btnYMinusClick = document.getElementById('btnYMinus');
     // const sphere = getSphere(50, 32, 16, 0xffcc00);
     // scene.add(sphere);
     const customGeometry = getCustomGeometry();
@@ -37,6 +41,21 @@ const init = () => {
 
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
+    btnClick.addEventListener('click', ()=>{
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    })
+    btnXPlusClick.addEventListener('click', () => {
+        customGeometry.position.x += 1
+    })
+    btnXMinusClick.addEventListener('click', () => {
+        customGeometry.position.x -= 1
+    })
+    btnYPlusClick.addEventListener('click', () => {
+        customGeometry.position.y += 1
+    })
+    btnYMinusClick.addEventListener('click', () => {
+        customGeometry.position.y -= 1
+    })
 
     const animate = () => {
         customGeometry.position.x = Math.abs(Math.sin(Date.now() * 0.001)) * 10;
@@ -47,7 +66,7 @@ const init = () => {
         requestAnimationFrame(render);
         renderer.render(scene, camera);
         controls.update();
-        animate();
+        // animate();
     };
     render();
 };
